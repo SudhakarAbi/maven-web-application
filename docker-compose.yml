@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   springboot:
-    image: prataptec22/maven-web-app:VERSION
+    image: prataptec22/maven-web-app-docker:VERSION
     restart: always
     ports:
     - 9090:8080

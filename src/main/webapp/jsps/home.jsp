@@ -13,6 +13,6 @@
 <h1 align="center"> This is test web page</h1>
 	<h1 align="center"> This is test web page(github webhook-test1)</h1>
 	<h1 align="center"> Thank you !</h1>
-	echo "today :" date
+	
 </body>
 </html>

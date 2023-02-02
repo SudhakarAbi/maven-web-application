@@ -1,6 +1,8 @@
 node{
     
    def maven_Home = tool name: 'maven3.8.7', type: 'maven'
+   
+   properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '2', artifactNumToKeepStr: '3', daysToKeepStr: '2', numToKeepStr: '3')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
     
     stage('GitCheckout')
     {

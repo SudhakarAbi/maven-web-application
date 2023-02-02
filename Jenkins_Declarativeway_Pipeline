@@ -1,0 +1,45 @@
+pipeline{
+    
+    agent any 
+    tools{
+    maven "maven3.8.7"
+    }
+    options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '3', artifactNumToKeepStr: '3', daysToKeepStr: '2', numToKeepStr: '3')
+}
+
+    stages{
+        stage('Git checkout')
+        {
+            steps{
+               git branch: 'development', changelog: false, credentialsId: 'Github_Credentials', poll: false, url: 'https://github.com/Pratap-devops-training/maven-web-application.git' 
+            }
+        }
+        stage('Build Package')
+		{
+            steps{
+                sh "mvn clean package"
+            }
+		}
+        stage('SonarcodeReport')
+        {
+            steps{
+                sh "mvn sonar:sonar"
+            }
+        }
+        stage('Nexus Artifactory push')
+        {
+            steps{
+                sh "mvn deploy"
+            }
+        }
+        stage('Deply to Tomcat')
+        {
+            steps{
+                sshagent(['80dfeb09-5d5d-4ecf-b887-a20ea5ddf0fd']) {
+    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.38.17:/opt/apache-tomcat-9.0.71/webapps"
+}
+            }
+        }
+        }
+    }

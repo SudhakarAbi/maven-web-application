@@ -1,0 +1,27 @@
+node{
+    
+   def maven_Home = tool name: 'maven3.8.7', type: 'maven'
+    
+    stage('GitCheckout')
+    {
+        git branch: 'development', credentialsId: 'Github_Credentials', url: 'https://github.com/Pratap-devops-training/maven-web-application.git'
+    }
+    stage('Maven Build')
+    {
+    sh "${maven_Home}/bin/mvn clean package"
+    }
+    stage('exicuteSonarQubeReport')
+    {
+    sh "${maven_Home}/bin/mvn sonar:sonar " 
+    }
+    stage('Upload artifacts into nexus')
+    {
+    sh "${maven_Home}/bin/mvn deploy" 
+    }
+    stage('DepolyToTomcat')
+    {
+       sshagent(['80dfeb09-5d5d-4ecf-b887-a20ea5ddf0fd']) {
+    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.38.17:/opt/apache-tomcat-9.0.71/webapps"
+}
+}
+    }

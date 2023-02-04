@@ -1,5 +1,9 @@
 @Library('sharedlib') _
 
+//sharedlib configured in  Global Pipeline Libraries configure system under manage jenkins in jenkins
+//sharedlib in this we need to add shared lib github URL it contacins /var dir and there is a groovy script ,we need to call that function with file without .groovy, in this notifyBuild is script in /avr dir
+
+
 node{
 
 try {

@@ -10,9 +10,9 @@
 
 <body>
 <h1 align="center">Hello Everyone ! </h1>
-<h1 align="center"> This is test web page</h1>
-	<h1 align="center"> Objective :Practice 2-Declarative</h1>
-	<h1 align="center"> Thank you !</h1>
+<h1 align="center"> This is Test Job for Tomcat</h1>
+	<h1 align="center"> Objective : Deploying Web Application</h1>
+	<h1 align="center"> Thank you,,,,,!</h1>
 	
 </body>
 </html>

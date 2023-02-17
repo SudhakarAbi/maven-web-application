@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>pratap-web-page</title>
+<title>Tom-cat</title>
 <link href="images/Pratap.jpeg" rel="icon">
 </head>
 
